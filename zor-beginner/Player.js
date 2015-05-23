@@ -2,20 +2,30 @@ const WARRIOR_MAX_HEALTH = 20;
 
 class Player {
 
+  constructor() {
+  	this._health = WARRIOR_MAX_HEALTH;
+  }
+
   playTurn(warrior) {
+  	this._warrior = warrior;
+  	this._react();
+  	this._health = this._warrior.health();
+  }
 
-  	if( warrior.feel().isEmpty() ) {
+  _sectorClear() {
+	if( this._warrior.health() === WARRIOR_MAX_HEALTH || this._health > this._warrior.health() ) {
+		this._warrior.walk();
+	} else {
+		this._warrior.rest();
+	}
+  }
 
-  		if( warrior.health() < WARRIOR_MAX_HEALTH ) {
-  			warrior.rest()
-  		} else {
-  			warrior.walk();
-  		}
+  _react() {
+  	this._isClear() ? this._sectorClear() : this._warrior.attack();
+  }
 
-  	} else {
-  		warrior.attack();
-  	}
-
+  _isClear() {
+  	return this._warrior.feel().isEmpty();
   }
 
 }
