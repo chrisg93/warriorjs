@@ -1,13 +1,13 @@
-Level 2
+Level 3
 
-It is too dark to see anything, but you smell sludge nearby.
+The air feels thicker than before. There must be a horde of sludge.
 
-Tip: Use `warrior.feel().isEmpty()` to see if there is anything in front of you, and `warrior.attack()` to fight it. Remember, you can only do one action per turn.
+Tip: Be careful not to die! Use `warrior.health()` to keep an eye on your health, and `warrior.rest()` to earn 10% of max health back.
 
 
- --------
-|@   s  >|
- --------
+ ---------
+|@ s ss s>|
+ ---------
 
 
   > = Stairs
@@ -19,6 +19,9 @@ Warrior Abilities:
 
   Actions:
   
+    warrior.rest()
+      Gain 10% of max health back, but do nothing more.
+  
     warrior.attack()
       Attacks a unit in given direction (forward by default).
   
@@ -26,6 +29,9 @@ Warrior Abilities:
       Move in the given direction (forward by default).
   
   Senses:
+  
+    warrior.health()
+      Returns an integer representing your health.
   
     warrior.feel()
       Returns a Space for the given direction (forward by default).
