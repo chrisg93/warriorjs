@@ -20,8 +20,18 @@ class Player {
 	}
   }
 
+  _isCaptive() {
+  	return this._warrior.feel().isCaptive();
+  }
+
   _react() {
-  	this._isClear() ? this._sectorClear() : this._warrior.attack();
+  	if( this._isClear() ) {
+  		this._sectorClear();
+  	} else if( this. _isCaptive() ) {
+  		this._warrior.rescue();
+  	} else {
+  		this._warrior.attack();
+  	}
   }
 
   _isClear() {
